@@ -1,0 +1,9 @@
+#include <stdio.h>
+void exibe_matriz_melhor_caso() {
+    printf("Sucesso\n");
+}
+
+int main() {
+    exibe_matriz_melhor_caso();
+    return 0;
+}
