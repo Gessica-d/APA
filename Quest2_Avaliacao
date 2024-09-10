@@ -1,0 +1,19 @@
+#include <stdio.h>
+// segunda questao da avaliacao
+
+double fun(int n) {
+    return (n * n * n) / 1000.0 - 100 * n * n - 100 * n + 3;
+}
+
+int main() {
+    int n;
+
+    printf("Informe o valor de n: ");
+    scanf("%d", &n);
+
+
+    double resul = fun(n);
+    printf("O resultado da funcao para n = %d é: %.2f\n", n, resul);
+
+    return 0;
+}
