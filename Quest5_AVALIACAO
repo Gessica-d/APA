@@ -1,0 +1,114 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+#define T_TABELA 1000
+
+typedef struct Nodo {
+    int c;
+    struct Nodo* prox;
+} Nodo;
+
+typedef struct TabelaHash {
+    Nodo** tabela;
+} TabelaHash;
+
+unsigned int hash(int c) {
+    return c % T_TABELA;
+}
+
+TabelaHash* c_T() {
+    TabelaHash* tabelaHash = (TabelaHash*)malloc(sizeof(TabelaHash));
+    tabelaHash->tabela = (Nodo**)malloc(T_TABELA * sizeof(Nodo*));
+    for (int i = 0; i < T_TABELA; i++) {
+        tabelaHash->tabela[i] = NULL;
+    }
+    return tabelaHash;
+}
+
+void inserir(TabelaHash* tabelaHash, int c) {
+    unsigned int index = hash(c);
+    Nodo* novoNodo = (Nodo*)malloc(sizeof(Nodo));
+    novoNodo->c = c;
+    novoNodo->prox = tabelaHash->tabela[index];
+    tabelaHash->tabela[index] = novoNodo;
+}
+
+bool contem(TabelaHash* tabelaHash, int c) {
+    unsigned int index = hash(c);
+    Nodo* atual = tabelaHash->tabela[index];
+    while (atual != NULL) {
+        if (atual->c == c) {
+            return true;
+        }
+        atual = atual->prox;
+    }
+    return false;
+}
+
+void liberarT(TabelaHash* tabelaHash) {
+    for (int i = 0; i < T_TABELA; i++) {
+        Nodo* atual = tabelaHash->tabela[i];
+        while (atual != NULL) {
+            Nodo* temp = atual;
+            atual = atual->prox;
+            free(temp);
+        }
+    }
+    free(tabelaHash->tabela);
+    free(tabelaHash);
+}
+
+void verificarSub(int* vetA, int tamA, int* vetB, int tamB) {
+    TabelaHash* tabelaHash = c_T();
+
+    for (int i = 0; i < tamA; i++) {
+        inserir(tabelaHash, vetA[i]);
+    }
+    bool ehSubconjunto = true;
+    for (int i = 0; i < tamB; i++) {
+        if (!contem(tabelaHash, vetB[i])) {
+            ehSubconjunto = false;
+            break;
+        }
+    }
+
+
+    if (ehSubconjunto) {
+        printf("B é subconjunto de A\n");
+    } else {
+        printf("B não é subconjunto de A\n");
+    }
+
+    liberarT(tabelaHash);
+}
+
+int main() {
+    int tamA, tamB;
+
+ 
+    printf("Informe o tamanho do vetor A: ");
+    scanf("%d", &tamA);
+    int* vetA = (int*)malloc(tamA * sizeof(int));
+
+    printf("Informe os elementos do vetor A:\n");
+    for (int i = 0; i < tamA; i++) {
+        scanf("%d", &vetA[i]);
+    }
+
+    printf("Informe o tamanho do vetor B: ");
+    scanf("%d", &tamB);
+    int* vetB = (int*)malloc(tamB * sizeof(int));
+
+    printf("Informe os elementos do vetor B:\n");
+    for (int i = 0; i < tamB; i++) {
+        scanf("%d", &vetB[i]);
+    }
+
+    verificarSub(vetA, tamA, vetB, tamB);
+
+    free(vetA);
+    free(vetB);
+
+    return 0;
+}
