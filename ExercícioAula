@@ -1,0 +1,78 @@
+Exercício APA
+
+1º
+
+A)
+
+Tanto no melhor quanto no pior caso, a complexidade é O(n), pois o número de iterações é sempre proporcional a n.
+
+B)
+
+O tempo estimado de execução do código, tanto no melhor quanto no pior caso, é 𝑂(𝑛) O(n), pois o loop sempre inteira n vezes, independente dos valores de m ou do vetor. Cada iteração executa operações constantes, o que mantém a complexidade linear.
+
+
+C)
+
+o tempo estimado de execução é O(n)tanto no melhor quanto no pior caso, porque o loop itera n vezes, seja qual for os valores do vetor.
+A operação de verificação da paridade e a soma são constantes, mantendo a complexidade linear.
+
+D)
+
+o tempo estimado de execução é 𝑂(𝑛) para o primeiro loop e O(n) para o segundo loop. Portanto, a complexidade total é O(n)+O(n)=O(n). Isso se aplica tanto ao melhor quanto ao pior caso, independentemente das entradas.
+
+E)
+
+Tempo de execução:
+
+O primeiro loop executa n vezes. O segundo loop, dentro do primeiro, também executa n vezes, resultando em n×n=n 2 operações.
+
+A complexidade de tempo para ambos os casos é O(n 2 ).
+
+F)
+
+Tempo de execução:
+
+O primeiro loop executa n vezes.
+Para cada iteração do primeiro loop, o segundo loop executa m vezes, resultando em um total de n×m operações.
+Complexidade:
+
+A complexidade de tempo para ambos os casos é 𝑂(𝑛⋅𝑚)O(n⋅m)
+
+g)
+
+Tempo de execução:
+
+O loop percorre todos os elementos do vetor, executando uma operação de comparação para cada elemento.
+Complexidade:
+
+A complexidade de tempo para ambos os casos é O(n), porque o vetor sempre vai percorrer todos os elementos.
+
+h)
+
+Tempo de execução:
+
+O código possui dois loops aninhados, onde o loop externo itera n vezes e, para cada iteração do loop externo, o loop interno também itera n vezes.
+Complexidade:
+
+A complexidade de tempo para o melhor e Pior caso é o mesmo 𝑂(𝑛^2), pois idependete dos valores de n, ele sempre será executado n^2.
+
+i)
+Complexidade tempo
+
+
+A complexidade de tempo para o melhor e Pior caso é a mesma O(O), pois seja qual for o valor dos elementos, o vetor irá percorrelo para encontrar o menor elemento.
+
+j)
+ O melhor caso O(n) - Ocorre quando o loop encontra o menor elemento e percorre o vetor uma vez. Ele sempre vai fazer n interações.
+Pior caso O (n^2) -Se o menor elemento for negativo, o segundo loop também execua n interações, porem se o menor elemento for positivo, o loop que mostra o menor elemento executará n^2 interações.
+
+
+2º
+
+a) O melhor caso acontece quando o nome é justamente o primeiro elemento fornecido, sendo a complexidade O(1), enquanto que o pior caso acontece quando o nome é o ultimo elemento fornecido ou não foi fornecido, sendo O(n).
+
+b) O melhor caso ocorre quando o nome é encontrado na primeira chamada da busca O(1) e o pior caso nos demais casos O(n).
+
+c) Segue a mesma lógica dos demais, o melhor caso ocorre quando o nome é encontrado na primeira chamada da busca O(1) e o pior caso acontece quando o nome só encontrado na ultima chamada ou não é encontrado O(n).
+
+d) O melhor caso ocorre quando o nome é encontrado na primeira chamada da busca O(1) e o pior caso acontece quando o nome não está na lista, levando a verificação de todos os elementos O(n).
