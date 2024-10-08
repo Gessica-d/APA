@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 8
+
+typedef struct {
+    char nome[30];
+    int points;
+} Team;
+
+void printTime(Team time[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d. %s - %d pontos\n", i + 1, time[i].nome, time[i].points);
+    }
+}
+
+
+void sortTeamsByPoints(Team time[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (time[j].points < time[j + 1].points) { // Ordenação decrescente
+                Team temp = time[j];
+                    time[j] = time[j + 1];
+                    time[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    Team time[MAX] = {
+        {"Argentina", 9},
+        {"Uruguay", 9},
+        {"Venezuela", 9},
+        {"Panama", 6},
+        {"Canada", 4},
+        {"Ecuador", 4},
+        {"Mexico", 4},
+        {"Chile", 2}
+    };
+
+    // Ordena os times por pontos
+    sortTeamsByPoints(time, MAX);
+
+    // Imprime o ranking
+    printf("Ranking da Copa América:\n");
+    printTime(time, MAX);
+
+    // Informa o primeiro e o último colocado
+    printf("\nPrimeiro colocado: %s - %d pontos\n", time[0].nome, time[0].points);
+    printf("Último colocado: %s - %d pontos\n", time[MAX - 1].nome, time[MAX - 1].points);
+
+    return 0;
+}
+
+}
